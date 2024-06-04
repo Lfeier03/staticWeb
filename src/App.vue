@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="init" ></div>
+  <router-view :name="Screen().Route"> </router-view>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import {RouterView, useRouter} from 'vue-router'
+import {onMounted} from "vue"
+import {Screen} from "@/stores/Screen.ts";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const router = useRouter();
+
+
+//页面挂在后执行  基本处于页面加赞完成后执行
+onMounted(() => {
+  router.push("/");
+  /*document.addEventListener('mousemove', function(event) {
+    const x = event.clientX; // 获取鼠标光标相对于浏览器窗口的X坐标
+    const y = event.clientY; // 获取鼠标光标相对于浏览器窗口的Y坐标
+    console.log('Mouse position: X = ' + x + ', Y = ' + y);
+  });*/
+
+
+});
+
+
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
